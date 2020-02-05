@@ -136,7 +136,7 @@ module.exports = function(webpackEnv) {
   };
 
   return {
-    mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
+    mode: 'development',
     // Stop compilation early in production
     bail: isEnvProduction,
     devtool: isEnvProduction
@@ -339,7 +339,7 @@ module.exports = function(webpackEnv) {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
                 resolvePluginsRelativeTo: __dirname,
-                
+
               },
               loader: require.resolve('eslint-loader'),
             },
@@ -372,7 +372,7 @@ module.exports = function(webpackEnv) {
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
-                
+
                 plugins: [
                   [
                     require.resolve('babel-plugin-named-asset-import'),
@@ -414,7 +414,7 @@ module.exports = function(webpackEnv) {
                 cacheDirectory: true,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
-                
+
                 // Babel sourcemaps are needed for debugging into node_modules
                 // code.  Without the options below, debuggers like VSCode
                 // show incorrect code and set breakpoints on the wrong lines.
@@ -669,5 +669,13 @@ module.exports = function(webpackEnv) {
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter
     performance: false,
+    // When importing a module whose path matches one of the following, just
+    // assume a corresponding global variable exists and use that instead.
+    // This is important because it allows us to avoid bundling all of our
+    // dependencies, which allows browsers to cache those libraries between builds.
+    // externals: {
+    //   "react": "React",
+    //   "react-dom": "ReactDOM"
+    // }
   };
 };
