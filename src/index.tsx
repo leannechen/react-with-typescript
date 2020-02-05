@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import { Hello } from './components/Hello';
 
 ReactDOM.render(
-    <Hello  compiler="TypeScript" framework="React" />,
-    document.getElementById('root')
+  <Hello  compiler="TypeScript" framework="React" />,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
